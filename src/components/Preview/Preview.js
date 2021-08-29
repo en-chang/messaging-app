@@ -13,7 +13,6 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    backgroundColor: theme.palette.background.paper,
   },
   inline: {
     display: 'inline',
@@ -25,7 +24,7 @@ export default function AlignItemsList() {
 
   return (
     <List className={classes.root}>
-      <ListItem alignItems="flex-start">
+      <ListItem button alignItems="flex-start">
         <ListItemAvatar>
           {/* broken-image is used to automatically create avatar img */}
           <Avatar alt={`First Sender`} src="/broken-image.jpg" />
@@ -50,13 +49,13 @@ export default function AlignItemsList() {
         variant="contained"
         color="secondary"
         className={classes.button}
-        alignItems="center"
+        style={{justifySelf: 'center', alignSelf: 'center'}}
       >
         Delete
       </Button>
       </ListItem>
       <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
+      <ListItem button alignItems="flex-start">
         <ListItemAvatar>
           <Avatar alt={`Second Sender`} src="/broken-image.jpg" />
         </ListItemAvatar>
@@ -80,7 +79,7 @@ export default function AlignItemsList() {
         variant="contained"
         color="secondary"
         className={classes.button}
-        alignItems="center"
+        style={{justifySelf: 'center', alignSelf: 'center'}}
       >
         Delete
       </Button>

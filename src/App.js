@@ -1,7 +1,8 @@
 import SignIn from './components/SignIn/SignIn';
 import Tabs from './components/Tabs/Tabs';
 import Preview from './components/Preview/Preview'
-import Modal from './components/Modal/Modal';
+import Modal from './components/Modal/Modal'
+import Compose from './components/Compose/Compose'
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -28,10 +29,11 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <CssBaseline/>
-        <Tabs></Tabs>
         <SignIn></SignIn>
+        <Tabs></Tabs>
         <Preview></Preview>
         <Modal></Modal>
+        <Compose></Compose>
       </ThemeProvider>
     </div>
   );
