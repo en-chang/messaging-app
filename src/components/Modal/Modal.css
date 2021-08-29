@@ -1,0 +1,13 @@
+.modal-close {
+  font-size: 3rem;
+  font-style: bold;
+  position: absolute;
+  top: 0%;
+  right: 2%;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: grey;
+  cursor: pointer;
+}
