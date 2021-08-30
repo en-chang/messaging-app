@@ -1,3 +1,8 @@
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 import SignIn from './components/SignIn/SignIn';
 import Tabs from './components/Tabs/Tabs';
 import Preview from './components/Preview/Preview'
@@ -29,11 +34,21 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <CssBaseline/>
-        <SignIn></SignIn>
-        <Tabs></Tabs>
-        <Preview></Preview>
-        <Modal></Modal>
-        <Compose></Compose>
+        <Router>
+          {/* A <Switch> looks through its children <Route>s and
+              renders the first one that matches the current URL. */}
+          <Switch>
+            <Route path="/home">
+              <Tabs />
+              <Preview />
+              <Modal />
+              <Compose />
+            </Route>
+            <Route path="/">
+              <SignIn />
+            </Route>
+          </Switch>
+        </Router>
       </ThemeProvider>
     </div>
   );

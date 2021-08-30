@@ -39,6 +39,7 @@ export default function CenteredTabs() {
         <Button
           variant="outlined"
           color="primary"
+          href="/"
           style={{marginRight: '14px', gridColumn: '21', justifySelf: 'end'}}
         >
           Logout
