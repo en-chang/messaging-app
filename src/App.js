@@ -3,6 +3,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import SignIn from './components/SignIn/SignIn';
 import Tabs from './components/Tabs/Tabs';
 import Preview from './components/Preview/Preview'
@@ -14,7 +15,7 @@ import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import './App.css';
-import { lightBlue } from '@material-ui/core/colors';
+import { blue } from '@material-ui/core/colors';
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -24,11 +25,14 @@ function App() {
       createTheme({
         palette: {
           type: prefersDarkMode ? 'dark' : 'light',
-          primary: lightBlue,
+          primary: blue,
         },
       }),
     [prefersDarkMode],
   );
+
+  // Used to get tab state
+  const tab = useSelector((state) => state.tab.value);
 
   return (
     <div className="App">
@@ -40,9 +44,20 @@ function App() {
           <Switch>
             <Route path="/home">
               <Tabs />
-              <Preview />
-              <Modal />
-              <Compose />
+              {
+                {
+                  'inbox': 
+                    <div>
+                      <Preview />
+                    </div>,
+                  'sent':
+                    <div>
+                      <Preview />
+                      <Modal />
+                    </div>,
+                  'compose': <Compose />
+                }[tab] || <Preview />
+              }
             </Route>
             <Route path="/">
               <SignIn />

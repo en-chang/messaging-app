@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { inbox, sent, compose } from './navTabs';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
@@ -14,9 +16,23 @@ const useStyles = makeStyles({
 export default function CenteredTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const dispatch = useDispatch();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    switch (newValue) {
+      case 0:
+        dispatch(inbox())
+        break;
+      case 1:
+        dispatch(sent())
+        break;
+      case 2:
+        dispatch(compose())
+        break;
+      default:
+        dispatch(inbox())
+    }
   };
 
   return (
