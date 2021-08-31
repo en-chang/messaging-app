@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import tabsReducer from './components/Tabs/navTabs'
+import tabsReducer from './components/Tabs/tabSlice'
+import modalReducer from './components/Modal/modalSlice'
 
 export const store = configureStore({
   reducer: {
-    tab: tabsReducer
+    tab: tabsReducer,
+    modalOpen: modalReducer,
   },
 })

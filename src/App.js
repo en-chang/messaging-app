@@ -6,9 +6,8 @@ import {
 import { useSelector } from 'react-redux';
 import SignIn from './components/SignIn/SignIn';
 import Tabs from './components/Tabs/Tabs';
-import Preview from './components/Preview/Preview'
-import Modal from './components/Modal/Modal'
-import Compose from './components/Compose/Compose'
+import Preview from './components/Preview/Preview';
+import Compose from './components/Compose/Compose';
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -39,11 +38,10 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline/>
         <Router>
-          {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
           <Switch>
             <Route path="/home">
               <Tabs />
+              {/* Switch statement to choose home page rendering */}
               {
                 {
                   'inbox': 
@@ -53,7 +51,6 @@ function App() {
                   'sent':
                     <div>
                       <Preview />
-                      <Modal />
                     </div>,
                   'compose': <Compose />
                 }[tab] || <Preview />

@@ -4,7 +4,7 @@ const initialState = {
   nav: 'inbox',
 }
 
-export const navTabs = createSlice({
+export const tabSlice = createSlice({
   name: 'tab',
   initialState,
   reducers: {
@@ -20,6 +20,6 @@ export const navTabs = createSlice({
   }
 })
 
-export const { inbox, sent, compose } = navTabs.actions
+export const { inbox, sent, compose } = tabSlice.actions
 
-export default navTabs.reducer
+export default tabSlice.reducer
