@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -27,8 +28,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const defaultState = {
+  email: '',
+  password: '',
+}
+
 export default function SignIn() {
   const classes = useStyles();
+
+  const [formValues, setFormValues] = useState(defaultState);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(formValues['email']);
+    console.log(formValues['password']);
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -39,7 +61,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -50,6 +72,8 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            value={formValues.email}
+            onChange={handleInputChange}
           />
           <TextField
             variant="outlined"
@@ -61,6 +85,8 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={formValues.password}
+            onChange={handleInputChange}
           />
           <Button
             type="submit"
@@ -68,7 +94,6 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            href="home"
           >
             Sign In
           </Button>
