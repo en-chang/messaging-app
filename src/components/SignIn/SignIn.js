@@ -48,8 +48,25 @@ export default function SignIn() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formValues['email']);
-    console.log(formValues['password']);
+    fetch('http://localhost:3000/signin', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: formValues['email'],
+        password: formValues['password']
+      })
+    })
+      .then(resp => resp.json())
+      .then(user => {
+        // console.log(user);
+        if (user === 'signed in') {
+          window.location.href = '/home';
+        } else {
+          alert('Sorry! Email or Password is incorrect.');
+        }
+      })
   }
 
   return (
