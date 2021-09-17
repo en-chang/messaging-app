@@ -60,8 +60,8 @@ export default function SignIn() {
     })
       .then(resp => resp.json())
       .then(user => {
-        // console.log(user);
-        if (user === 'signed in') {
+        // if user email exists
+        if (user.email) {
           window.location.href = '/home';
         } else {
           alert('Sorry! Email or Password is incorrect.');
